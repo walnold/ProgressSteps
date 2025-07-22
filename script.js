@@ -8,18 +8,14 @@ let currentActive = 1;
 next.addEventListener("click", () => {
   if (currentActive < circles.length) {
     currentActive++;
-  } else {
-      
-  }
-  
+  } 
+  update()
 });
 
 prev.addEventListener("click", () => {
   if (currentActive > 1) {
     currentActive--;
-  } else {
-  }
-
+  } 
   update();
 });
 
@@ -33,6 +29,18 @@ function update() {
   });
 
   const actives = document.querySelectorAll(".active");
-  progress.style.width = ((actives.length-1) / (circles.length-1)) * 100 + '%';
+    progress.style.width = ((actives.length - 1) / (circles.length - 1)) * 100 + '%';
+    
+    if (currentActive === 1) {
+        prev.disabled = true
+    } else {
+        prev.disabled = false
+    }
+
+      if (currentActive === 4) {
+        next.disabled = true
+    } else {
+        next.disabled = false
+    }
  
 }
